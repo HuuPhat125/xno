@@ -30,7 +30,7 @@ class AllData:
         OhlcvDataManager.stats()
         ohlcv_df = OhlcvDataManager.get(resolution, symbol, factor=1000, from_time=from_time)
         if ohlcv_df.empty:
-            raise ValueError("No OHLCV data found.")
+            raise ValueError(f"No OHLCV data found: {symbol} - {resolution} from=[{from_time}]")
 
         ohlcv_df.index = pd.to_datetime(ohlcv_df.index)
         ohlcv_df = ohlcv_df.sort_index(ascending=True)
